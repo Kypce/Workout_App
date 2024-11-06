@@ -1,0 +1,8 @@
+workout1,qwerty,BPBPAR,120#60#60#45#30#60
+workout2,asdf,BARAR,60#30#30#45#30
+workout3,poiuy,BR,20#30
+dying,hard,ba,5#10
+Workout4,testing,RA,20#30
+My workout,this is a test,BAR,60#20#30
+My new workout1,testing new things :P,BPR,20#10#20
+Awesome new workout,iouejninpiadsfpiu,RB,10#40
