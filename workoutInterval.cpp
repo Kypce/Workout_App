@@ -95,10 +95,14 @@ bool checkNumber(std::string str) {
 void stopwatch(int length, char nextEff = ' ', int nextInt = -1) {
     std::chrono::seconds totalLength(length);
     std::chrono::seconds second(1);
+    // Bools utilized to only display messages only once4
+    bool msg = true;
+    bool final = true;
 
     // Can use this to be able to do an action every second
     for(length; length >= 0; length--) {
         std::this_thread::sleep_for(second);
+
         if(length % 60 == 0 && length != 60) {
             std::cout << secondsToMinutes(length) << " minutes left!\n";
         } else if(length == 60) {
@@ -107,14 +111,19 @@ void stopwatch(int length, char nextEff = ' ', int nextInt = -1) {
             std::cout << length << " seconds left!\n";
         } else if(length == 30) {
             std::cout << length << " seconds left!\n";
-            if(nextEff != ' ' && nextInt != -1)
-                std::cout << "Next interval block is " << effortInterpret(nextEff) << " for " << nextInt << " seconds\n";
-            else
-                std::cout << "You got this! Last stretch!\n";
         } else if(length == 10) {
             std::cout << length << " seconds left!\n";
         } else if(length <= 3) {
             std::cout << length << " seconds left!\n";
+        }
+
+        // Dispays message for next interval or final stretch if there are no more inteverals
+        if(msg && length <= 30 && nextEff != ' ' && nextInt != -1) {
+            std::cout << "Next interval block is " << effortInterpret(nextEff) << " for " << nextInt << " seconds\n";
+            msg = false;
+        } else if(final && nextEff == ' ' && nextInt == -1) {
+            std::cout << "You got this! Last stretch!\n";
+            final = false;
         }
     }
 
@@ -356,7 +365,9 @@ void mainMenu(std::string file) {
 
 int main() {
     std::string file = "Saved_Workouts.txt";
-    mainMenu(file);
+    //mainMenu(file);
+
+    deletefromFile(file, "hahahahahahahaha");
 
     return 0;
 }
